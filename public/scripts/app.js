@@ -43,12 +43,12 @@ $( document ).ready(function() {
 
     //signup success function
     function signUpSuccess () {
-    	window.location.href = '/project';
+    	window.location.href = '/welcome';
     }
 
     //signup error function
     function signUpError () {
-    	console.log('this user log in has been taken, please try again!');
+    	console.log('sign in error, please try again!');
     }
 
     //login success function
