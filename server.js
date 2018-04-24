@@ -6,6 +6,7 @@ const path       = require('path');
 const bodyParser = require('body-parser');
 const mongoose   = require('mongoose');
 const morgan     = require('morgan');
+// const db         = require('./models');
 const User       = require('./models/user');
 const session    = require('express-session');
 
