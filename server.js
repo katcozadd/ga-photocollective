@@ -44,6 +44,7 @@ app.get('/signup', function (req, res) {
 	res.render('signup');
 });
 
+//creating user 
 app.post('/user', function (req, res) {
 	User.createSecure(req.body.email, req.body.password, function(err, newUser) {
 		console.log(req.body.email);
@@ -57,10 +58,30 @@ app.post('/user', function (req, res) {
 	});
 });
 
+//login page
 app.get('/login', function (req, res) {
 	res.render('login');
 });
 
+//authenticate user log in
+app.post('/sessions', function (req, res) {
+	User.authenticate(req.body.email, req.body.password, function (err, returningUser) {
+		if (err) {
+			console.log("index error: " + err);
+      		res.sendStatus(500);
+		} else {
+			req.session.userId = returningUser.id;
+			res.json(returningUser);
+		}
+	});
+});
+
+//projects page route
+app.get('/project', function (req, res) {
+	User.findOne({_id : req.session.userId}, function (err, user) {
+	res.render('project', {user: user});
+	})
+})
 
 
 
