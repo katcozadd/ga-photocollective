@@ -45,7 +45,7 @@ app.get('/signup', function (req, res) {
 });
 
 //creating user 
-app.post('/signup', function (req, res) {
+app.post('/user', function (req, res) {
 	User.createSecure(req.body.email, req.body.password, function(err, newUser) {
 		console.log(req.body.email);
 		console.log(req.body.password);
@@ -64,7 +64,7 @@ app.get('/login', function (req, res) {
 });
 
 //authenticate user log in
-app.post('/login', function (req, res) {
+app.post('/sessions', function (req, res) {
 	User.authenticate(req.body.email, req.body.password, function (err, returningUser) {
 		if (err) {
 			console.log("index error: " + err);
