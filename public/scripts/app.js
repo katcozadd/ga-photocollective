@@ -48,7 +48,7 @@ $( document ).ready(function() {
 
     //signup error function
     function signUpError () {
-    	console.log('not quite!');
+    	console.log('this user log in has been taken, please try again!');
     }
 
     //login success function

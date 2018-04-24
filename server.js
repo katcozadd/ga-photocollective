@@ -34,6 +34,7 @@ mongoose.connect('mongodb://localhost/photo-users');
 /**********
  * ROUTES *
  **********/
+
 //homepage
 app.get('/', function (req, res) {
 	res.render("index");
@@ -83,7 +84,10 @@ app.get('/project', function (req, res) {
 	})
 })
 
-
+//about page route
+app.get('/about',  function (req, res) {
+	res.render('about');
+})
 
 
 
