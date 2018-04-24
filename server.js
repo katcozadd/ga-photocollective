@@ -34,17 +34,31 @@ mongoose.connect('mongodb://localhost/photo-users');
 /**********
  * ROUTES *
  **********/
-
+//homepage
 app.get('/', function (req, res) {
-	res.render("index")
+	res.render("index");
 });
 
+//signup page
 app.get('/signup', function (req, res) {
-	res.render('signup')
+	res.render('signup');
+});
+
+app.post('/user', function (req, res) {
+	User.createSecure(req.body.email, req.body.password, function(err, newUser) {
+		console.log(req.body.email);
+		console.log(req.body.password);
+		if (err) {
+			console.log("index error: " + err);
+      		res.sendStatus(500);
+		} else {
+			res.json(newUser);
+		}
+	});
 });
 
 app.get('/login', function (req, res) {
-	res.render('login')
+	res.render('login');
 });
 
 
