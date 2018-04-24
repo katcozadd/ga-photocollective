@@ -29,7 +29,6 @@ app.use(session({
 	secret:'SuperSecretCookie',
 	cookie:{maxAge:30*60*1000}
 }));
-mongoose.connect('mongodb://localhost/photo-users');
 
 /**********
  * ROUTES *
@@ -96,6 +95,8 @@ app.get('/about',  function (req, res) {
  * SERVER *
  **********/
 // listen on port 3000
-app.listen(3000, function () {
-  console.log('server started on locahost:3000');
-});
+  app.set('port', process.env.PORT || 3001)
+
+  app.listen(app.get('port'), () => {
+    console.log(`✅ PORT: ${app.get('port')} 🌟`)
+  })
