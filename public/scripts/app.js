@@ -13,7 +13,7 @@ $( document ).ready(function() {
 
     	$.ajax({
     		method: 'POST',
-    		url: '/user',
+    		url: '/signup',
     		data: signUpData,
     		success: signUpSuccess,
     		error: signUpError
@@ -32,7 +32,7 @@ $( document ).ready(function() {
 
     	$.ajax({
     		method: "POST",
-    		url: "/sessions",
+    		url: "/login",
     		data: logInData,
     		success: logInSuccess,
     		error: logInError
