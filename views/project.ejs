@@ -17,10 +17,10 @@
 	<% include partials/nav.ejs %>
 </header>
 <body>	
-	<h1>Hey, welcome <%= user.email %> !</h1>
   <section class="container">
     <h3>Image Upload</h3>
-    <form action="/uploads" method="POST">
+    <%= typeof msg != 'undefined' ? msg : '' %>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
       <div class="file-field input-field">
         <div class="btn grey">
           <span>File</span>
@@ -32,6 +32,8 @@
       </div>
       <button type="submit" class="btn">Submit</button>
     </form>
+    <br>
+    <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img" alt="">
   </section>
 </body>
 </html>

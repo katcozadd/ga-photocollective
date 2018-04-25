@@ -31,6 +31,36 @@ app.use(session({
 	cookie:{maxAge:30*60*1000}
 }));
 
+//set storage engine
+const storage = multer.diskStorage({
+	destination: './public/uploads/',
+	filename: function(req, file, callback){
+		callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+	}
+});
+
+//initialize upload
+const upload = multer({
+	storage: storage,
+	limits: {fileSize: 1000000},
+	fileFilter: function(req, file, callback) {
+		checkFileType(file, callback);
+	}	
+}).single('myImage');
+
+//Check file type
+function checkFileType(file, callback) {
+	const filetypes = /jpeg|jpg|png|gif/; //file can only be of these file types otherwise a file cannot be uploaded
+	const extname = filetypes.test(path.extname(file.originalname).toLowerCase()); //creating variable to test that the name of the file has specific filetype in it
+	const mimetype = filetypes.test(file.mimetype); //creating variable to compare the file mimetype to the specified mimetypes
+	if (mimetype && extname) {
+		return callback(null, true); //if the mimetype and extname both are the correct filetype upload photo
+	} else {
+		callback('Error! Only images can be uploaded.'); //if not display this error message
+	}
+}
+
+
 /**********
  * ROUTES *
  **********/
@@ -96,6 +126,28 @@ app.get('/welcome', function (req, res) {
 	});
 });
 
+//upload route
+app.post('/upload', function (req, res) {
+	upload(req, res, (err) => {
+		if (err) {
+			res.render('project', {
+				msg: err
+			});
+		} else {
+			if (req.file === undefined) { //if there is no file uploaded throw error
+				res.render('project', {
+					msg: "Error! No image was selected to upload."
+				});
+			} else {
+				res.render('project', {
+					msg: 'File uploaded!',
+					file: `uploads/${req.file.filename}` //using interpolation to append file through img tag in ejs file
+				});
+
+			}
+		}
+	})
+})
 
 
 
