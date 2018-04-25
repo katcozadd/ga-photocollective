@@ -43,7 +43,7 @@ $( document ).ready(function() {
 
     //signup success function
     function signUpSuccess () {
-    	window.location.href = '/';
+    	window.location.href = '/welcome';
     }
 
     //signup error function

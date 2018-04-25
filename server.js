@@ -2,12 +2,13 @@
 const express    = require('express');
 const app        = express();
 const path       = require('path');
+const multer     = require('multer');
 
 const bodyParser = require('body-parser');
 const mongoose   = require('mongoose');
 const morgan     = require('morgan');
-// const db         = require('./models');
 const User       = require('./models/user');
+const Image      = require('./models/imagefile')
 const session    = require('express-session');
 
 // middleware
@@ -53,6 +54,7 @@ app.post('/signup', function (req, res) {
 			console.log("index error: " + err);
       		res.sendStatus(500);
 		} else {
+			req.session.userId = newUser.id;
 			res.json(newUser);
 		}
 	});
@@ -80,13 +82,19 @@ app.post('/login', function (req, res) {
 app.get('/project', function (req, res) {
 	User.findOne({_id : req.session.userId}, function (err, user) {
 	res.render('project', {user: user});
-	})
-})
+	});
+});
 
 //about page route
 app.get('/about',  function (req, res) {
 	res.render('about');
 })
+
+app.get('/welcome', function (req, res) {
+	User.findOne({_id : req.session.userId}, function (err, user) {
+		res.render('welcome', {user: user});
+	});
+});
 
 
 
