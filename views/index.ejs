@@ -5,15 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- stylesheet -->
   <link rel="stylesheet" href="styles/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat:100,300,400|Ubuntu" rel="stylesheet">
   <title>Welcome - Photo Collective</title>
   <!-- scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
 <body>
-	<% include partials/nav.ejs %>
-	<h1>hey girl hey!</h1>
-  <a href="/signup">Let's Explore</a>
+  <header>
+    <img src="/images/logo-white.png" alt="">
+  </header>
+  <div class="fullscreen-bg">
+    <video loop muted autoplay id='myVideo'>
+      <source src='images/beaver-ponds.mp4' type='video/mp4'>
+    </video>
+  </div>
+  <section class="intro">
+    <div class="inner">
+      <div class="content">
+        <a href="/signup" class="introTitle">Let's Explore</a>
+      </div>
+    </div>
+  </section>
 </body>
 </html>

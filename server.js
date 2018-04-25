@@ -3,7 +3,9 @@ const express    = require('express');
 const app        = express();
 const path       = require('path');
 const multer     = require('multer');
-
+const cloudinary = require('cloudinary');
+// const multipart  = require('connect-multiparty');
+// const multipartMiddleware = multipart();
 const bodyParser = require('body-parser');
 const mongoose   = require('mongoose');
 const morgan     = require('morgan');
@@ -24,12 +26,15 @@ app.set('view engine', 'ejs');
 // body parser config to accept my datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//sessions
 app.use(session({
 	saveUnitialized : true,
 	resave:true,
 	secret:'SuperSecretCookie',
 	cookie:{maxAge:30*60*1000}
 }));
+
+
 
 //set storage engine
 const storage = multer.diskStorage({
@@ -60,7 +65,6 @@ function checkFileType(file, callback) {
 	}
 }
 
-
 /**********
  * ROUTES *
  **********/
@@ -75,6 +79,16 @@ app.get('/signup', function (req, res) {
 	res.render('signup');
 });
 
+//login page
+app.get('/login', function (req, res) {
+	res.render('login');
+});
+
+//about page route
+app.get('/about',  function (req, res) {
+	res.render('about');
+})
+
 //creating user 
 app.post('/signup', function (req, res) {
 	User.createSecure(req.body.email, req.body.password, function(err, newUser) {
@@ -88,11 +102,6 @@ app.post('/signup', function (req, res) {
 			res.json(newUser);
 		}
 	});
-});
-
-//login page
-app.get('/login', function (req, res) {
-	res.render('login');
 });
 
 //authenticate user log in
@@ -115,11 +124,8 @@ app.get('/project', function (req, res) {
 	});
 });
 
-//about page route
-app.get('/about',  function (req, res) {
-	res.render('about');
-})
 
+//welcome page after signing up
 app.get('/welcome', function (req, res) {
 	User.findOne({_id : req.session.userId}, function (err, user) {
 		res.render('welcome', {user: user});

@@ -1,6 +1,6 @@
 body {
-	background: pink;
-	font-family: 'Ubuntu', sans-serif;
+	background: #ffffff;
+	font-family: 'Montserrat', sans-serif;
 }
 
 a {
@@ -14,4 +14,67 @@ li {
 	display: inline-block;
 	padding: 10px;
 	float: right;
+}
+
+#myVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-size: contain;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+.intro {
+	height: 703px;
+	width: 100%;
+	margin: auto;
+	display: table;
+	top: 0;
+}
+
+.intro .inner {
+	display: table-cell;
+	vertical-align: middle;	
+	width: 100%;
+	max-width: none;
+}
+
+.content{
+	max-width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.content .introTitle {
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	color: white;
+	z-index: 100;
+}
+
+.introTitle {
+    border: 2px solid white;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.3);
+    width: 40%;
+    font-size: 250%;
+    margin: 0 auto;
+    font-weight: 100;
+}
+
+.introTitle:hover {
+	background: rgba(255, 255, 255, 0.7);
+	border: 2px solid #46401B;
+	color: #46401B;
+}
+
+img {
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	height: 90px;
+	width: auto;
 }
