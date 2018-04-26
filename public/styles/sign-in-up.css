@@ -96,3 +96,14 @@ img {
     z-index: 100;
     height: 68px;
 }
+
+li.footer {
+	color: #ffffff;
+    background: #C8A08C;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    font-size: 80%;
+    text-align: right;
+}
