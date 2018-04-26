@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- stylesheet -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-  <link rel="stylesheet" href="styles/sign-in-up.css">
+  <link rel="stylesheet" href="styles/upload.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Montserrat:300,400|Ubuntu:300,400" rel="stylesheet">
   <title>Photo Collective</title>
   <!-- scripts -->
@@ -14,15 +14,22 @@
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
 <header>
-	<% include partials/nav.ejs %>
+  <a href="/"><img id="logo" src="images/logo-white.png" alt=""></a>
+  <nav>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </nav>
 </header>
-<body>	
+<body>  
   <section class="container">
     <h3>Image Upload</h3>
     <%= typeof msg != 'undefined' ? msg : '' %>
     <form action="/upload" method="POST" enctype="multipart/form-data">
       <div class="file-field input-field">
-        <div class="btn grey">
+        <div class="btn blue-grey lighten-3">
           <span>File</span>
           <input name="myImage" type="file">
         </div>
@@ -30,7 +37,7 @@
           <input class="file-path validate" type="text">
         </div>
       </div>
-      <button type="submit" class="btn">Submit</button>
+      <button type="submit" class="blue-grey darken-1 btn">Submit</button>
     </form>
     <br>
     <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img" alt="">

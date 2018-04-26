@@ -43,7 +43,7 @@ $( document ).ready(function() {
 
     //signup success function
     function signUpSuccess () {
-    	window.location.href = '/welcome';
+    	window.location.href = '/project';
     }
 
     //signup error function
