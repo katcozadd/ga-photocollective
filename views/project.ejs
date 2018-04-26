@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- stylesheet -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/sign-in-up.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Montserrat:300,400|Ubuntu:300,400" rel="stylesheet">
   <title>Photo Collective</title>
   <!-- scripts -->
@@ -35,5 +35,6 @@
     <br>
     <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img" alt="">
   </section>
+  <% include partials/footer.ejs %>
 </body>
 </html>
