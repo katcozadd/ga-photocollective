@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- stylesheet -->
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/sign-in-up.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Montserrat:300,400|Ubuntu:300,400" rel="stylesheet">
   <title>Sign Up - Photo Collective</title>
   <!-- scripts -->
@@ -12,14 +12,23 @@
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
 <body>
-<body>
-	<h1>Sign Up</h1>
+    <% include partials/nav.ejs %>
+  <h1>Welcome to the Colorado <span>Collective</span></h1>
+  <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis vitae iste minus excepturi officiis dignissimos, id voluptatem ipsa, non eos error magnam nemo odio repudiandae minima sapiente. Non, quod, eius. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit inventore perspiciatis dolores at voluptatibus repellendus amet, error reprehenderit enim nulla optio necessitatibus ducimus deleniti saepe adipisci excepturi nihil debitis sapiente!</h2>
+	<h3>Sign Up</h3>
 	<form id="signup-form">
+    <label for="email">Your Email:</label>
+    <br>
 		<input id="email-input" type="text" name="email" class="form-control" placeholder="Email" autofocus>
+    <br>
+    <label for="password">Password:</label>
+    <br>
 		<input id="password-input" type="password" name="password" class="form-control" placeholder="Password">
+    <br>
 		<input type="submit" value="Sign Up" class="submit btn btn-primary">
+    <br>
+    <h5>Already have an account?</h5>
 		<a href="/login">Login</a>
 	</form>
-</body>
 </body>
 </html>

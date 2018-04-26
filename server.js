@@ -145,18 +145,33 @@ app.post('/upload', function (req, res) {
 					msg: "Error! No image was selected to upload."
 				});
 			} else {
-				res.render('project', {
-					msg: 'File uploaded!',
-					file: `uploads/${req.file.filename}` //using interpolation to append file through img tag in ejs file
+				console.log(req.file);
+				let imageObject = {
+					contentType: req.file.mimetype,
+					fileName: req.file.filename
+				}
+				Image.create(imageObject, function(err, newImage) {
+					if (err) {
+						console.log("new image error: " + err);
+					} else {
+						console.log(newImage);
+						res.render('project', {
+						msg: 'File uploaded!',
+						file: `uploads/${newImage.fileName}` //using interpolation to append file through img tag in ejs file
+					});
+					}
 				});
 
 			}
 		}
-	})
-})
+	});
+});
 
 
-
+				// res.render('project', {
+				// 	msg: 'File uploaded!',
+				// 	file: `uploads/${req.file.filename}` //using interpolation to append file through img tag in ejs file
+				// });
 /**********
  * SERVER *
  **********/
