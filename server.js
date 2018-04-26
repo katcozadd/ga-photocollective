@@ -47,7 +47,7 @@ const storage = multer.diskStorage({
 //initialize upload
 const upload = multer({
 	storage: storage,
-	limits: {fileSize: 1000000},
+	limits: {fileSize: 10000000},
 	fileFilter: function(req, file, callback) {
 		checkFileType(file, callback);
 	}	
@@ -132,7 +132,7 @@ app.get('/welcome', function (req, res) {
 	});
 });
 
-//create
+
 //upload route
 app.post('/upload', function (req, res) {
 	upload(req, res, (err) => {
@@ -168,11 +168,6 @@ app.post('/upload', function (req, res) {
 	});
 });
 
-
-				// res.render('project', {
-				// 	msg: 'File uploaded!',
-				// 	file: `uploads/${req.file.filename}` //using interpolation to append file through img tag in ejs file
-				// });
 /**********
  * SERVER *
  **********/

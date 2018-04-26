@@ -36,3 +36,13 @@ h3 {
 form {
 	z-index: -1;
 }
+
+li.footer {
+	background: #C4C9CE;
+	position: fixed;
+	width: 100%;
+	text-align: right;
+	bottom: 0;
+	left: 0;
+
+}

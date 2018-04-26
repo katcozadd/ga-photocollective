@@ -1,5 +1,10 @@
 $( document ).ready(function() {
-    console.log( "ready!" );
+    console.log( "page ready!" );
+
+    let allImages = [];
+    let $imageList;
+
+    $imageList = $('#imageTarget');
 
     $('#signup-form').on('submit', function(event) {
     	event.preventDefault();
@@ -38,8 +43,6 @@ $( document ).ready(function() {
     		error: logInError
     	});
     });
-
-
 
     //signup success function
     function signUpSuccess () {
