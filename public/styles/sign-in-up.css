@@ -88,3 +88,11 @@ nav li a {
 .loginQ {
 	margin-top: 3px;
 }
+
+img {
+    position: fixed;
+    top: -7px;
+    left: 0;
+    z-index: 100;
+    height: 68px;
+}
