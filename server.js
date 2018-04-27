@@ -8,7 +8,8 @@ const bodyParser = require('body-parser');
 const mongoose   = require('mongoose');
 const morgan     = require('morgan');
 const User       = require('./models/user');
-const Image      = require('./models/imagefile')
+const Image      = require('./models/imagefile');
+const Post       = require('./models/post');
 const session    = require('express-session');
 
 // middleware
@@ -123,17 +124,17 @@ app.get('/project', function (req, res) {
 	});
 });
 
-
-//welcome page after signing up
-app.get('/welcome', function (req, res) {
-	User.findOne({_id : req.session.userId}, function (err, user) {
-		res.render('welcome', {user: user});
-	});
+//logout
+app.get('/logout', function (req, res) {
+  // remove the session user id
+  req.session.userId = null;
+  // redirect to login (for now)
+  res.redirect('/login');
 });
 
 
 //create - upload route
-app.post('/upload', function (req, res) {
+app.post('/project/upload', function (req, res) {
 	upload(req, res, (err) => {
 		if (err) {
 			res.render('project', {
@@ -167,15 +168,24 @@ app.post('/upload', function (req, res) {
 	});
 });
 
-// app.get('/upload', function (req, res, next) {
-// 	Image.find(err, image) {
-// 		if (err) {
-// 			console.log('index error: ' + err);
-// 			res.sendStatus(500);
-// 		}
-// 		res.json(image);
-// 	}
+// //upload
+// app.get('/upload', function (req, res) {
+// 	res.render('project')
 // })
+
+//input post create
+app.post('/upload', function (req, res) {
+	let newPost = req.body;
+	console.log(newPost);
+		Post.create(newPost, function(err, newPostDocument) {
+			if (err) {
+				console.log('index error: ' + err)
+				res.sendStatus(500)
+			} else {
+				res.json(newPostDocument);
+			}
+		});
+});
 
 /**********
  * SERVER *

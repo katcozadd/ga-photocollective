@@ -1,11 +1,6 @@
 $( document ).ready(function() {
     console.log( "page ready!" );
 
-    let allImages = [];
-    let $imageList;
-
-    $imageList = $('#imageTarget');
-
     $('#signup-form').on('submit', function(event) {
     	event.preventDefault();
 

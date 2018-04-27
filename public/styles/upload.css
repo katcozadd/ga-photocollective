@@ -17,6 +17,7 @@ li {
 	display: inline-block;
 	padding: 10px;
 	float: right;
+	color: #000000;
 }
 
 nav li a {
@@ -37,9 +38,16 @@ h3 {
     margin: 7.946667rem 0 1.168rem 0;
 }
 
+h2 {
+    font-size: 1.96rem;
+    line-height: 110%;
+    margin: 0.373333rem 0 1.424rem 0;
+}
+
 form {
 	z-index: -1;
 }
+
 
 li.footer {
 	background: #C4C9CE;
