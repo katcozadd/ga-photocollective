@@ -4,8 +4,6 @@ const app        = express();
 const path       = require('path');
 const multer     = require('multer');
 const cloudinary = require('cloudinary');
-// const multipart  = require('connect-multiparty');
-// const multipartMiddleware = multipart();
 const bodyParser = require('body-parser');
 const mongoose   = require('mongoose');
 const morgan     = require('morgan');
@@ -15,6 +13,7 @@ const session    = require('express-session');
 
 // middleware
 // serve static files in public
+app.use('/uploads', express.static('uploads'));
 app.use(express.static('public'));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
@@ -133,7 +132,7 @@ app.get('/welcome', function (req, res) {
 });
 
 
-//upload route
+//create - upload route
 app.post('/upload', function (req, res) {
 	upload(req, res, (err) => {
 		if (err) {
@@ -167,6 +166,16 @@ app.post('/upload', function (req, res) {
 		}
 	});
 });
+
+// app.get('/upload', function (req, res, next) {
+// 	Image.find(err, image) {
+// 		if (err) {
+// 			console.log('index error: ' + err);
+// 			res.sendStatus(500);
+// 		}
+// 		res.json(image);
+// 	}
+// })
 
 /**********
  * SERVER *

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- stylesheet -->
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/about.css">
  <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Quicksand|Ubuntu" rel="stylesheet">
   <title>About - Photo Collective</title>
   <!-- scripts -->
@@ -12,8 +12,25 @@
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
 <header>
-	<% include partials/nav.ejs %>
+  <a href="/"><img id="logo" src="images/logo-white.png" alt=""></a>
+  <nav>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </nav>
 </header>
+<body>
+	<div id="img-container">
+		<img src="images/DSC_0001.jpg">
+	</div>
+	<img src="images/logo-black.png" id="blklogo" alt="">
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab tenetur officia perspiciatis dolorum ex, neque sit provident nisi consectetur. Deleniti libero fuga iusto esse, ullam consequuntur a nobis, itaque tenetur.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab tenetur officia perspiciatis dolorum ex, neque sit provident nisi consectetur. Deleniti libero fuga iusto esse, ullam consequuntur a nobis, itaque tenetur.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab tenetur officia perspiciatis dolorum ex, neque sit provident nisi consectetur. Deleniti libero fuga iusto esse, ullam consequuntur a nobis, itaque tenetur.</p>
+</body>
+<% include partials/footer.ejs %>
 <body>	
 </body>
 </html>
