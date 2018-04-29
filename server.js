@@ -134,7 +134,7 @@ app.get('/logout', function (req, res) {
 
 
 //create - upload route
-app.post('/project/upload', function (req, res) {
+app.post('/upload', function (req, res) {
 	upload(req, res, (err) => {
 		if (err) {
 			res.render('project', {
@@ -176,7 +176,7 @@ app.post('/project/upload', function (req, res) {
 //input post create
 app.post('/upload', function (req, res) {
 	let newPost = req.body;
-	console.log(newPost);
+	console.log(req);
 		Post.create(newPost, function(err, newPostDocument) {
 			if (err) {
 				console.log('index error: ' + err)

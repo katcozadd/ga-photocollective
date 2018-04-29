@@ -19,7 +19,7 @@
   "homepage": "https://github.com/katcozadd/ga-photocollective#readme",
   "dependencies": {
     "bcrypt": "^2.0.1",
-    "body-parser": "^1.18.2",
+    "body-parser": "1.18.2",
     "cloudinary": "1.11.0",
     "connect-multiparty": "2.1.0",
     "e": "0.0.4",

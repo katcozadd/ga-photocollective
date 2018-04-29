@@ -14,19 +14,20 @@ $(document).ready(function() {
     // });
 
 
-    $('#storyCreate').on('click', function(e) {
+    $('#newPostForm').on('submit', function(e) {
     	e.preventDefault();
-    	
+    	console.log($('#textInput'))
     	$.ajax({
     		method: 'POST',
     		url: '/upload',
-    		data: $('newPostForm').serialize(),
+    		data: $('#textInput').serialize(),
     		success: newPostSuccess,
     		error: newPostError
     	});
     });
 
 function getPostHtml(postList) {
+console.log(allPosts);
   return `<li>
             My Story: <b>${postList.input}</b>
             <br />
@@ -58,7 +59,7 @@ function handleError(e) {
 
 function newPostSuccess(json) {
   $('#newPostForm input').val(''); //clearing the input field after successful post
-  console.log(json);
+  // console.log(json);
   allPosts.push(json); //pushing all data from the array into json
   render();
 }
