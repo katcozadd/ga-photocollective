@@ -174,6 +174,24 @@ app.delete('/upload/:id', function (req, res) {
   });
 });
 
+app.put('/upload/:id', function(req,res){
+  console.log(req.params.id);
+  let input = req.body.input;
+  console.log(input);
+  Post.findOneAndUpdate(
+    {_id: req.params.id}, {$set:{input: input}}, {new: true}, function (err, update) {
+        if (err) {
+      console.log("index error: " + err);
+      res.sendStatus(500);
+      } else {
+        //doc is the json object that is being sent (refer to 'json' callback in JS functions)
+        console.log(update);
+        res.json(update);
+    }
+  });
+
+});
+
 //create photo - upload route
 app.post('/upload', function (req, res) {
 	upload(req, res, (err) => {

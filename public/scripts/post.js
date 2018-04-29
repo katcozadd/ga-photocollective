@@ -36,6 +36,16 @@ $(document).ready(function(){
     });
   });
 
+  $postList.on('click', '.update', function() {
+    console.log('clicked update button to,  /upload/'+$(this).attr('data-id'));
+    $.ajax({
+      method: 'PUT',
+      url: '/upload/'+$(this).attr('data-id'),
+      data: $('#newPostForm').serialize(),
+      success: updatePostSuccess,
+      error: updatePostError
+    });
+  });
 
 function getPostHtml(postList) {
   return `<li>
@@ -93,6 +103,20 @@ function deletePostSuccess(json) {
 }
 
 function deletePostError() {
+  console.log('delete post error!');
+}
+
+function updatePostSuccess(json) {
+  var postId = json._id;
+  for(var i = 0; i < allPosts.length; i++) {
+    if(allPosts[i]._id === postId) {
+      allPosts[i].input = json.input;
+  }
+   render();
+}
+};
+
+function updatePostError() {
   console.log('delete post error!');
 }
 
