@@ -1,38 +1,49 @@
-$(document).ready(function() {
-    console.log( "page ready!" );
+console.log("Sanity Check: JS is working!");
+var $postList;
+var allPosts = []; //empty array
 
-    let allPosts = [];
-    let $postList;
+$(document).ready(function(){
 
-    $postList = $('#postTarget');
+  $postList = $('#postTarget');
+ 
+  $.ajax({
+    method: 'GET', //getting all of the data from database
+    url: '/upload', //on this url
+    success: handleSuccess, //calls handleSuccess on success
+    error: handleError //throws error on error
+  });
 
-    // $.ajax({
-    // 	method: 'GET',
-    // 	url: '/upload',
-    // 	success: handleSuccess,
-    // 	error: handleError
-    // });
 
 
-    $('#newPostForm').on('submit', function(e) {
-    	e.preventDefault();
-    	console.log($('#textInput'))
-    	$.ajax({
-    		method: 'POST',
-    		url: '/upload',
-    		data: $('#textInput').serialize(),
-    		success: newPostSuccess,
-    		error: newPostError
-    	});
+  $("#storyCreate").on('click', function(e) {
+    e.preventDefault();
+    $.ajax({
+      method: 'POST', //post method
+      url: '/upload', //url to post on
+      data: $('#newPostForm').serialize(), //serializing the form object
+      success: newPostSuccess,
+      error: newPostError
     });
+  });
+
+    $postList.on('click', '.delete', function() {
+    console.log('clicked delete button to, /upload/' + $(this).attr('data-id'))
+    $.ajax({
+      method: 'DELETE',
+      url: '/upload/'+$(this).attr('data-id'),
+      success: deletePostSuccess,
+      error: deletePostError
+    });
+  });
+
 
 function getPostHtml(postList) {
-console.log(allPosts);
   return `<li>
-            My Story: <b>${postList.input}</b>
+            <b>${postList.input}</b>
             <br />
             <br />
-            <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${postList._id}>Delete</button>
+            <button type="button" name="button" class="blue-grey darken-1 btn delete" data-id=${postList._id}>Delete</button>
+            <button type="button" name="button" class="blue-grey darken-1 btn update" data-id=${postList._id}>Update</button>
           </li>`;
 }
 
@@ -43,7 +54,7 @@ function getAllPostHtml(post) {
 //function to render all posts to view
 function render () {
   $postList.empty();// empty existing posts from view
-  let postHtml = getAllPostHtml(allPosts); // pass `allToDos` into the template function
+  var postHtml = getAllPostHtml(allPosts); // pass `allToDos` into the template function
   $postList.append(postHtml);// append html to the view
 };
 
@@ -58,16 +69,32 @@ function handleError(e) {
 }
 
 function newPostSuccess(json) {
-  $('#newPostForm input').val(''); //clearing the input field after successful post
-  // console.log(json);
+  $('#newPostForm input').val(''); //clearing the input fields after successful post
+  console.log(json);
   allPosts.push(json); //pushing all data from the array into json
   render();
 }
 
 function newPostError() {
-  console.log('new post error!');
+  console.log('new to do error!');
 }
 
+function deletePostSuccess(json) {
+  let postId = json;
+  console.log('delete post', postId);
+  // find the todo with the correct ID and remove it from our allToDos array
+  for(var index = 0; index < allPosts.length; index++) {
+    if(allPosts[index]._id === postId) {
+      allPosts.splice(index, 1);
+      break;  
+    }
+  }
+  render();
+}
+
+function deletePostError() {
+  console.log('delete post error!');
+}
 
 
 });

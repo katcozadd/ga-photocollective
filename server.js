@@ -128,12 +128,53 @@ app.get('/project', function (req, res) {
 app.get('/logout', function (req, res) {
   // remove the session user id
   req.session.userId = null;
-  // redirect to login (for now)
+  // redirect to login
   res.redirect('/login');
 });
 
+//read
+app.get('/upload', function (req, res, next) {
+    console.log('hello') // shows in terminal
+    Post.find(function(err, post) {
+    	if (err) {
+    	console.log("index error: " + err);
+      	res.sendStatus(500);
+    	}
+    res.json(post);
+    });
+});
 
-//create - upload route
+//input post create
+app.post('/upload', function(req, res) {
+  // create new post with form data (`req.body`)
+  let newPost = req.body;
+  console.log(newPost)
+    Post.create(newPost, function(err, newPostDocument){
+    if (err) {
+      console.log("index error: " + err)
+      res.sendStatus(500)  
+    } else {
+      //executed only in the success case, where theres no error
+      res.json(newPostDocument);  
+    }	
+});
+});
+
+// delete post
+app.delete('/upload/:id', function (req, res) {
+  // get post id from url params (`req.params`)
+  Post.findOneAndRemove({_id: req.params.id}, function(err, posts) {
+    if (err) {
+      console.log("index error: " + err);
+      res.sendStatus(500);
+    }
+    // get the id of the post to delete
+    let postToDelete = req.params.id;
+    res.json(postToDelete);
+  });
+});
+
+//create photo - upload route
 app.post('/upload', function (req, res) {
 	upload(req, res, (err) => {
 		if (err) {
@@ -168,24 +209,8 @@ app.post('/upload', function (req, res) {
 	});
 });
 
-// //upload
-// app.get('/upload', function (req, res) {
-// 	res.render('project')
-// })
 
-//input post create
-app.post('/upload', function (req, res) {
-	let newPost = req.body;
-	console.log(req);
-		Post.create(newPost, function(err, newPostDocument) {
-			if (err) {
-				console.log('index error: ' + err)
-				res.sendStatus(500)
-			} else {
-				res.json(newPostDocument);
-			}
-		});
-});
+
 
 /**********
  * SERVER *

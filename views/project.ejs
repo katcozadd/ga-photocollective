@@ -44,18 +44,20 @@
     <br>
     <h2>Share a story!</h2>
     <div class="row">
-      <form id="newPostForm" class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="textInput" name="input" class="materialize-textarea"></input>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <form class="form-inline" id="newPostForm" name="input">
+            <div class="form-group">
+              <input type="text" class="form-control" name="input" placeholder="Tell your story...">
+            </div>
             <button id="storyCreate" type="submit" class="blue-grey darken-1 btn">Submit</button>
+          </form>
+          <div id='postTarget'>
           </div>
         </div>
-      </form>
+      </div>
     </div>
-
-
-
+    </div>
     <br>
     <img src="<%= typeof file != 'undefined' ? file : '' %>" class="responsive-img" id="imageTarget" alt="">
     <div id="postTarget"></div>
