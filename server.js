@@ -145,7 +145,7 @@ app.get('/upload', function (req, res, next) {
 });
 
 //input post create
-app.post('/upload', function(req, res) {
+app.post('/uploads', function(req, res) {
   // create new post with form data (`req.body`)
   let newPost = req.body;
   console.log(newPost)

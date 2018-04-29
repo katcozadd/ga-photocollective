@@ -19,7 +19,7 @@ $(document).ready(function(){
     e.preventDefault();
     $.ajax({
       method: 'POST', //post method
-      url: '/upload', //url to post on
+      url: '/uploads', //url to post on
       data: $('#newPostForm').serialize(), //serializing the form object
       success: newPostSuccess,
       error: newPostError
