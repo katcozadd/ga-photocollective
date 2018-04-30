@@ -121,6 +121,9 @@ app.post('/login', function (req, res) {
 app.get('/project', function (req, res) {
 	User.findOne({_id : req.session.userId}, function (err, user) {
 	res.render('project', {user: user});
+	Image.find(function(err, image) {
+		
+	})
 	});
 });
 

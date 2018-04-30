@@ -3,7 +3,10 @@ var $postList;
 var allPosts = []; //empty array
 
 $(document).ready(function(){
+//routes for the photos
 
+
+//all of the routes for the posts
   $postList = $('#postTarget');
  
   $.ajax({
@@ -12,8 +15,6 @@ $(document).ready(function(){
     success: handleSuccess, //calls handleSuccess on success
     error: handleError //throws error on error
   });
-
-
 
   $("#storyCreate").on('click', function(e) {
     e.preventDefault();
