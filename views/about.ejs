@@ -11,26 +11,30 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
-<header>
-  <a href="/"><img id="logo" src="images/logo-white.png" alt=""></a>
+<body>
+  <header>
+  <a href="/"><img id="logo" src="images/logo-white.png" alt="Colorado Collection"></a>
   <nav>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
+    <ul id="nav-mobile">
       <li><a href="/">Home</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/login">Login</a></li>
     </ul>
   </nav>
 </header>
-<body>
-	<div id="img-container">
-		<img src="images/DSC_0001.jpg">
-	</div>
-	<img src="images/logo-black.png" id="blklogo" alt="">
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab tenetur officia perspiciatis dolorum ex, neque sit provident nisi consectetur. Deleniti libero fuga iusto esse, ullam consequuntur a nobis, itaque tenetur.</p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab tenetur officia perspiciatis dolorum ex, neque sit provident nisi consectetur. Deleniti libero fuga iusto esse, ullam consequuntur a nobis, itaque tenetur.</p>
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab tenetur officia perspiciatis dolorum ex, neque sit provident nisi consectetur. Deleniti libero fuga iusto esse, ullam consequuntur a nobis, itaque tenetur.</p>
-</body>
-<% include partials/footer.ejs %>
-<body>	
+  <div style="clear:both;">
+  	<div id="img-container" class="column">
+  		<img src="images/DSC_0001.jpg">
+  	</div>
+    <div id="text-container" class="column">
+    	<img src="images/logo-black.png" id="blklogo" alt="">
+    	<p>The Colorado Collective was founded in April of 2018. We are a group of creators, story tellers and adventurers that are dedicated to sharing the experiences that make Colorado so unique.</p>
+    	<p>Please become part of the community. Tell your stories, share your photos, connect with the other members of the collective. </p>
+      <p>Please respect the work and of others. Since this is a collective there are no strict rules set on what you can or cannot post. We trust that everyone on this website is here to share the mutual love for our beautiful state.</p>
+      <p>Please enjoy... seriously.</p>
+    	<p> “If you are faced with a mountain, you have several options. You can climb it and cross to the other side. You can go around it. You can dig under it. You can fly over it. You can blow it up. You can ignore it and pretend it’s not there. You can turn around and go back the way you came. Or you can stay on the mountain and make it your home.” <em>― Vera Nazarian</em></p>
+      </div>
+  </div>
+  <% include partials/footer.ejs %>
 </body>
 </html>

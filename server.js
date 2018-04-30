@@ -37,19 +37,19 @@ app.use(session({
 
 
 //set storage engine
-const storage = multer.diskStorage({
-	destination: './public/uploads/',
+const storage = multer.diskStorage({ 
+	destination: './public/uploads/',//stores the uploaded photos in a public folder called uploads
 	filename: function(req, file, callback){
-		callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+		callback(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)); //names the file with a dated milisecond and the name I have set for it in the form
 	}
 });
 
 //initialize upload
 const upload = multer({
 	storage: storage,
-	limits: {fileSize: 10000000},
+	limits: {fileSize: 10000000}, //setting a maximum file size
 	fileFilter: function(req, file, callback) {
-		checkFileType(file, callback);
+		checkFileType(file, callback); // checks the file type to see if we will be able to upload it
 	}	
 }).single('myImage');
 
@@ -174,6 +174,7 @@ app.delete('/upload/:id', function (req, res) {
   });
 });
 
+//update post
 app.put('/upload/:id', function(req,res){
   console.log(req.params.id);
   let input = req.body.input;
@@ -196,7 +197,7 @@ app.put('/upload/:id', function(req,res){
 app.post('/upload', function (req, res) {
 	upload(req, res, (err) => {
 		if (err) {
-			res.render('project', {
+			res.render('project', { //if no
 				msg: err
 			});
 		} else {

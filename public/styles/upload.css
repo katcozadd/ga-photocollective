@@ -10,6 +10,7 @@ nav {
 	display: inline-block;
 	float: right;
 	width: 100%;
+	z-index: 10;
 }
 
 li {
@@ -19,7 +20,7 @@ li {
 	color: #000000;
 }
 
-nav li {
+#projectNav li {
 	list-style-type: none;
 	display: inline-block;
 	padding: 10px;
@@ -30,6 +31,10 @@ nav li a {
 	color: #ffffff;
 	z-index: 100;
 	float: right;
+}
+
+li b {
+	margin-top: 15px;
 }
 
 #logo {
