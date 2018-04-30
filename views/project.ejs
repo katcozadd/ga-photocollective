@@ -13,17 +13,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
   <script type="text/javascript" src="/scripts/post.js"></script>
 </head>
-<header>
-  <a href="/"><img id="logo" src="images/logo-white.png" alt=""></a>
-  <nav id="projectNav">
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/logout">Logout</a></li>
-    </ul>
-  </nav>
-</header>
 <body>  
+  <header>
+    <a href="/"><img id="logo" src="images/logo-white.png" alt=""></a>
+    <nav id="projectNav">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
   <section class="container">
     <h3>Upload an image</h3>
     <%= typeof msg != 'undefined' ? msg : '' %>
