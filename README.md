@@ -54,7 +54,7 @@ This helped hugely for uploading my photos.
 	</div>
 	<button id="create" type="submit" class="blue-grey darken-1 btn">Submit</button>
 </form>
-    ```
+```
 
 ### Obstacles
 The biggest obstacle that I have faced with this project has been using a backend controller to get all of the image data from the database and using frontend JavaScript to append those images to the DOM and keep them there. I am still currently working on this issue.
