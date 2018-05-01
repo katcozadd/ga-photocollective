@@ -75,6 +75,7 @@ p {
 	text-align: left;
 	margin-top: -5px;
 	margin-right: 10px;
+	z-index: -1;
 }
 
 @media screen and (max-width: 600px) {
